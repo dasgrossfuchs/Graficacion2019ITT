@@ -27,6 +27,7 @@ namespace P5
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
+            
             ismousedown = false;
         }
 
@@ -38,6 +39,7 @@ namespace P5
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
+            Cursor.Hide();
             centro = e.Location;
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             Image bmp = pictureBox1.Image;
