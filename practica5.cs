@@ -12,7 +12,7 @@ namespace Graficacion
 {
     public partial class Form1 : Form
     {
-        bool ismousedown = true;
+        bool ismousedown = false;
         Point centro = new Point(0,0);
         
         
