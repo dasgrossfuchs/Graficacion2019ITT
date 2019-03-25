@@ -39,8 +39,43 @@ namespace P5
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            Cursor.Hide();
-            centro = e.Location;
+            
+            //Cursor.Hide();
+            //centro = e.Location;
+            //pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            //Image bmp = pictureBox1.Image;
+            //Graphics g = Graphics.FromImage(bmp);
+            //if (ismousedown == true)
+            //{
+
+
+            //    Pen blue = new Pen(Color.Blue, 3);
+            //    Pen red = new Pen(Color.Red, .5f);
+
+            //    for (int i = 0; i < 110; i += 10)
+            //    {
+            //        red.Color = Color.Salmon;
+            //        g.DrawLine(red, centro.X - 100 + i, centro.Y, centro.X, centro.Y - i);
+            //        red.Color = Color.LightBlue;
+            //        g.DrawLine(red, centro.X, centro.Y - 100 + i, centro.X + i, centro.Y);
+            //        red.Color = Color.Orange;
+            //        g.DrawLine(red, centro.X + 100 - i, centro.Y, centro.X, centro.Y + i);
+            //        red.Color = Color.PowderBlue;
+            //        g.DrawLine(red, centro.X, centro.Y + 100 - i, centro.X - i, centro.Y);
+            //    }
+            //    g.DrawLine(blue, centro.X - 100, centro.Y, centro.X + 100, centro.Y);
+            //    g.DrawLine(blue, centro.X, centro.Y - 100, centro.X, centro.Y + 100);
+
+
+            //}
+            //Refresh();
+        }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+            
+            centro = new Point(MousePosition.X,MousePosition.Y);
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             Image bmp = pictureBox1.Image;
             Graphics g = Graphics.FromImage(bmp);
@@ -68,6 +103,40 @@ namespace P5
 
             }
             Refresh();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+            centro = new Point(MousePosition.X,MousePosition.Y+10) ;
+            pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            Image bmp = pictureBox1.Image;
+            Graphics g = Graphics.FromImage(bmp);
+            if (ismousedown == true)
+            {
+
+
+                Pen blue = new Pen(Color.Blue, 3);
+                Pen red = new Pen(Color.Red, .5f);
+
+                for (int i = 0; i < 110; i += 10)
+                {
+                    red.Color = Color.Salmon;
+                    g.DrawLine(red, centro.X - 110 + i, centro.Y, centro.X, centro.Y - i);
+                    red.Color = Color.LightBlue;
+                    g.DrawLine(red, centro.X, centro.Y - 110 + i, centro.X + i, centro.Y);
+                    red.Color = Color.Orange;
+                    g.DrawLine(red, centro.X + 110 - i, centro.Y, centro.X, centro.Y + i);
+                    red.Color = Color.PowderBlue;
+                    g.DrawLine(red, centro.X, centro.Y + 110 - i, centro.X - i, centro.Y);
+                }
+                g.DrawLine(blue, centro.X - 110, centro.Y, centro.X + 110, centro.Y);
+                g.DrawLine(blue, centro.X, centro.Y - 110, centro.X, centro.Y + 110);
+
+
+            }
+            Refresh();
+
         }
     }
 }
