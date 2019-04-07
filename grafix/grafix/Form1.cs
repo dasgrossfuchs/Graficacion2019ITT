@@ -12,6 +12,7 @@ namespace grafix
 {
     public partial class Form1 : Form
     {
+        bool right = true;
         Image img = Image.FromFile(@"vita.png");
         Rectangle idle1 = new Rectangle(4, 3, 15, 18);
         Rectangle idle2 = new Rectangle(28, 3, 15, 18);
@@ -38,6 +39,32 @@ namespace grafix
         Rectangle crun6 = new Rectangle(532, 3, 15, 18);
         Rectangle crun7 = new Rectangle(556, 3, 15, 18);
 
+        //left
+        Rectangle lcrun7 = new Rectangle(4, 3, 15, 18);
+        Rectangle lcrun6 = new Rectangle(28, 3, 15, 18);
+        Rectangle lcrun5 = new Rectangle(52, 3, 15, 18);
+        Rectangle lcrun4 = new Rectangle(76, 3, 15, 18);
+        Rectangle lcrun3 = new Rectangle(100, 3, 15, 18);
+        Rectangle lcrun2 = new Rectangle(124, 3, 15, 18);
+        Rectangle lcrun1 = new Rectangle(148, 3, 15, 18);
+        Rectangle loof4 = new Rectangle(172, 3, 15, 18);
+        Rectangle loof3 = new Rectangle(196, 3, 15, 18);
+        Rectangle loof2 = new Rectangle(220, 3, 15, 18);
+        Rectangle loof1 = new Rectangle(244, 3, 15, 18);
+        Rectangle latk3 = new Rectangle(266, 3, 15, 18);
+        Rectangle latk2 = new Rectangle(292, 3, 15, 18);
+        Rectangle latk1 = new Rectangle(316, 3, 15, 18);
+        Rectangle lrun6 = new Rectangle(340, 3, 15, 18);
+        Rectangle lrun5 = new Rectangle(364, 3, 15, 18);
+        Rectangle lrun4 = new Rectangle(388, 3, 15, 18);
+        Rectangle lrun3 = new Rectangle(412, 3, 15, 18);
+        Rectangle lrun2 = new Rectangle(436, 3, 15, 18);
+        Rectangle lrun1 = new Rectangle(460, 3, 15, 18);
+        Rectangle lidle4 = new Rectangle(484, 3, 15, 18);
+        Rectangle lidle3 = new Rectangle(508, 3, 15, 18);
+        Rectangle lidle2 = new Rectangle(532, 3, 15, 18);
+        Rectangle lidle1 = new Rectangle(556, 3, 15, 18);
+
         bool stk = false;
         int count = 0;
         public Form1()
@@ -53,7 +80,8 @@ namespace grafix
             pictureBox1.Image = cropImage(img, idle1);
             pictureBox1.Refresh();
 
-
+            button1.Hide();
+            button2.Hide();
 
         }
         private static Image cropImage(Image img, Rectangle cropArea)
@@ -72,28 +100,57 @@ namespace grafix
         public void run()
         {
             
-            int sleep = 100;
-            for (int i = 0; i < 3; i++)
-            {
-                    System.Threading.Thread.Sleep(sleep);
-                    pictureBox1.Image = cropImage(img, run1);
-                    pictureBox1.Refresh();
-                    System.Threading.Thread.Sleep(sleep);
-                    pictureBox1.Image = cropImage(img, run2);
-                    pictureBox1.Refresh();
-                    System.Threading.Thread.Sleep(sleep);
-                    pictureBox1.Image = cropImage(img, run3);
-                    pictureBox1.Refresh();
-                    System.Threading.Thread.Sleep(sleep);
-                    pictureBox1.Image = cropImage(img, run4);
-                    pictureBox1.Refresh();
-                    System.Threading.Thread.Sleep(sleep);
-                    pictureBox1.Image = cropImage(img, run5);
-                    pictureBox1.Refresh();
-                    System.Threading.Thread.Sleep(sleep);
-                    pictureBox1.Image = cropImage(img, run6);
-                    pictureBox1.Refresh();
-            }
+            int sleep = 50;
+            
+                System.Threading.Thread.Sleep(sleep);
+                pictureBox1.Image = cropImage(img, run1);
+                pictureBox1.Refresh();
+                System.Threading.Thread.Sleep(sleep);
+                pictureBox1.Image = cropImage(img, run2);
+                pictureBox1.Refresh();
+                System.Threading.Thread.Sleep(sleep);
+                pictureBox1.Image = cropImage(img, run3);
+                pictureBox1.Refresh();
+                System.Threading.Thread.Sleep(sleep);
+                pictureBox1.Image = cropImage(img, run4);
+                pictureBox1.Refresh();
+                System.Threading.Thread.Sleep(sleep);
+                pictureBox1.Image = cropImage(img, run5);
+                pictureBox1.Refresh();
+                System.Threading.Thread.Sleep(sleep);
+                pictureBox1.Image = cropImage(img, run6);
+                pictureBox1.Refresh();
+                System.Threading.Thread.Sleep(sleep);
+                pictureBox1.Image = cropImage(img, run1);
+                pictureBox1.Refresh();
+        }
+        public void lrun()
+        {
+
+            int sleep = 50;
+
+            System.Threading.Thread.Sleep(sleep);
+            pictureBox1.Image = cropImage(img, lrun1);
+            pictureBox1.Refresh();
+            System.Threading.Thread.Sleep(sleep);
+            pictureBox1.Image = cropImage(img, lrun2);
+            pictureBox1.Refresh();
+            System.Threading.Thread.Sleep(sleep);
+            pictureBox1.Image = cropImage(img, lrun3);
+            pictureBox1.Refresh();
+            System.Threading.Thread.Sleep(sleep);
+            pictureBox1.Image = cropImage(img, lrun4);
+            pictureBox1.Refresh();
+            System.Threading.Thread.Sleep(sleep);
+            pictureBox1.Image = cropImage(img, lrun5);
+            pictureBox1.Refresh();
+            System.Threading.Thread.Sleep(sleep);
+            pictureBox1.Image = cropImage(img, lrun6);
+            pictureBox1.Refresh();
+            System.Threading.Thread.Sleep(sleep);
+            pictureBox1.Image = cropImage(img, lrun1);
+            pictureBox1.Refresh();
+
         }
         public void jump()
         {
@@ -191,6 +248,45 @@ namespace grafix
         private void button2_Click(object sender, EventArgs e)
         {
             jump();
+            
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                
+                case Keys.Left:
+                    if (right)
+                    {
+                        right = false;
+                        img.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                    }
+                    lrun();
+                    break;
+                case Keys.Right:
+                    if (!right)
+                    {
+                        right = true;
+                        img.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                    }
+                    run();
+
+                    break;
+                case Keys.Up:
+                    break;
+                
+                case Keys.Down:
+                    break;
+                default:break;
+                    
+            }
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+
             
         }
     }
